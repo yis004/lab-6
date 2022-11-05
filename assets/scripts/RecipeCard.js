@@ -15,7 +15,7 @@ class RecipeCard extends HTMLElement {
 
     const shadow = this.attachShadow({ mode: "open" });
     const article = document.createElement("article");
-    article.setAttribute("id","article");
+    //article.setAttribute("id","article");
     const style = document.createElement("style");
     style.textContent = `* {
       font-family: sans-serif;
@@ -122,14 +122,14 @@ class RecipeCard extends HTMLElement {
   set data(data) {
     // If nothing was passed in, return
     if (!data) return;
-    let article=document.getElementById("article");
-
+    let article=this.shadowRoot.querySelector("article");
+    
     // A6. TODO - Select the <article> we added to the Shadow DOM in the constructor
     // A7. TODO - Set the contents of the <article> with the <article> template given in
     //           cardTemplate.html and the data passed in (You should only have one <article>,
     //           do not nest an <article> inside another <article>). You should use Template
     //           literals (tempalte strings) and element.innerHTML for this.
-    const img = document.createElement("img");
+    /*const img = document.createElement("img");
     img.setAttribute("src", "https://link-to-article.com/recipe-thumbnail.jpg");
     img.setAttribute("alt", "Recipe Title");
 
@@ -175,30 +175,41 @@ class RecipeCard extends HTMLElement {
     article.appendChild(div);
     article.appendChild(time);
     article.appendChild(ingredients);
-
-
-    /*
-    <img src="https://link-to-article.com/recipe-thumbnail.jpg"
-      alt="Recipe Title">
-    <p class="title">
-      <a href="https://link-to-article.com">Title</a>
-    </p>
-    <p class="organization">The Chef's Organization</p>
-    <div class="rating">
-      <span>5</span>
-      <img src="/assets/images/icons/5-star.svg" alt="5 stars">
-      <span>(500)</span>
-    </div>
-    <time>50 min</time>
-    <p class="ingredients">
-      Comma, Separated, List, of, Ingredients
-    </p>
     */
-    //article.
+
+
+    article.innerHTML=
+    `<img src=${data.imgSrc}
+      alt=${data.imgAlt}>
+    <p class="title">
+      <a href=${data.titleLnk}>${data.titleTxt}</a>
+    </p>
+    <p class="organization">${data.organization}</p>
+    <div class="rating">
+      <span>${data.rating}</span>
+      <img src="/assets/images/icons/${data.rating}-star.svg" alt="${data.rating} stars">
+      <span>(${data.numRatings})</span>
+    </div>
+    <time>${data.lengthTime}</time>
+    <p class="ingredients">
+        ${data.ingredients}
+    </p>`;
+    
+    /*
+    "imgSrc": "string",
+   *                          "imgAlt": "string",
+   *                          "titleLnk": "string",
+   *                          "titleTxt": "string",
+   *                          "organization": "string",
+   *                          "rating": number,
+   *                          "numRatings": number,
+   *                          "lengthTime": "string",
+   *                          "ingredients": "string"
+   * */
 
   }
 }
 
-customElements.define("Recipe_card", RecipeCard);
+customElements.define("recipe-card", RecipeCard);
 // A8. TODO - Define the Class as a customElement so that you can create
 //           'recipe-card' elements
