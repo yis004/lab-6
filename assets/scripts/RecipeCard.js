@@ -15,7 +15,6 @@ class RecipeCard extends HTMLElement {
 
     const shadow = this.attachShadow({ mode: "open" });
     const article = document.createElement("article");
-    //article.setAttribute("id","article");
     const style = document.createElement("style");
     style.textContent = `* {
       font-family: sans-serif;
@@ -129,53 +128,6 @@ class RecipeCard extends HTMLElement {
     //           cardTemplate.html and the data passed in (You should only have one <article>,
     //           do not nest an <article> inside another <article>). You should use Template
     //           literals (tempalte strings) and element.innerHTML for this.
-    /*const img = document.createElement("img");
-    img.setAttribute("src", "https://link-to-article.com/recipe-thumbnail.jpg");
-    img.setAttribute("alt", "Recipe Title");
-
-    const title = document.createElement("p");
-    img.setAttribute("class", "title");
-
-    const title_link = document.createElement("a");
-    img.setAttribute("href", "https://link-to-article.com");
-    img.innerHTML=`Title`;
-
-    const organization= document.createElement("p");
-    organization.setAttribute("class","organization");
-    organization.innerHTML=`The Chef's Organization`;
-
-    const div= document.createElement("div");
-    div.setAttribute("class","rating");
-
-    const rating_star=document.createElement("span");
-    rating_star.innerHTML=`5`;
-
-    const rating_img = document.createElement("img");
-    rating_img.setAttribute("src", "/assets/images/icons/5-star.svg");
-    rating_img.setAttribute("alt", "5 stars");
-    
-    const rating_note=document.createElement("span");
-    rating_note.innerHTML=`(500)`;
-    
-    const time= document.createElement("time");
-    time.innerHTML=`50 min`;
-
-    const ingredients= document.createElement("p");
-    ingredients.setAttribute("class","ingredients");
-    ingredients.innerHTML=`Comma, Separated, List, of, Ingredients`;
-
-    title.appendChild(title_link);
-    div.appendChild(rating_star);
-    div.appendChild(rating_img);
-    div.appendChild(rating_note);
-
-    article.appendChild(img);
-    article.appendChild(title);
-    article.appendChild(organization);
-    article.appendChild(div);
-    article.appendChild(time);
-    article.appendChild(ingredients);
-    */
 
 
     article.innerHTML=
